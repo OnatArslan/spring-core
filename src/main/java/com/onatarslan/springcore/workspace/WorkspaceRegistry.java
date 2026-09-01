@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
-@Component
+@Component()
 public class WorkspaceRegistry {
 
     private final Map<String, Workspace> workspaces = new ConcurrentHashMap<>();
