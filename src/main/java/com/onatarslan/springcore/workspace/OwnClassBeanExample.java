@@ -1,7 +1,6 @@
 package com.onatarslan.springcore.workspace;
 
 
-import org.springframework.beans.factory.annotation.Value;
 
 public class OwnClassBeanExample {
 
