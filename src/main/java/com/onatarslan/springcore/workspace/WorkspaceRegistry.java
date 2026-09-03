@@ -1,6 +1,9 @@
 package com.onatarslan.springcore.workspace;
 
 
+import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.math.BigInteger;
@@ -16,6 +19,13 @@ public class WorkspaceRegistry {
     private final Map<String, Workspace> workspaces = new ConcurrentHashMap<>();
     private final Map<String, Project> projects = new ConcurrentHashMap<>();
     private final Map<String, Todo> todos = new ConcurrentHashMap<>();
+    private static final Logger log = LoggerFactory.getLogger(WorkspaceRegistry.class);
+
+
+    @PostConstruct
+    void logCreated() {
+        log.info("workspace registry created with workspaces={}", workspaceCount());
+    }
 
 
     public void save(Workspace workspace){

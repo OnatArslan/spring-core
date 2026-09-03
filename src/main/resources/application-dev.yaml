@@ -1,0 +1,7 @@
+orbit:
+  idgen:
+    strategy: prefixed
+  notification:
+    channels: [console]
+  audit:
+    slow-call-threshold: PT50MS

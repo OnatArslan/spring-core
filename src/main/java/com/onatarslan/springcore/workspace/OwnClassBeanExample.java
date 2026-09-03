@@ -1,6 +1,7 @@
 package com.onatarslan.springcore.workspace;
 
 
+import org.springframework.beans.factory.annotation.Value;
 
 public class OwnClassBeanExample {
 
@@ -10,6 +11,7 @@ public class OwnClassBeanExample {
 
 
     public OwnClassBeanExample(WorkspaceRegistry registry, WorkspaceService service, String prefix) {
+        System.out.println(prefix + "AAAAAAAAAAAA-----------------____________---------------");
         this.registry = registry;
         this.service = service;
         this.prefix = prefix; // buradaki prefix Bean olmadigi icin OwnClassBeanExample component olamaz
