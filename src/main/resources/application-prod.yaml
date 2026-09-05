@@ -1,7 +1,0 @@
-orbit:
-  workspace:
-    max-projects-per-workspace: 50
-  idgen:
-    strategy: uuid
-  notification:
-    channels: [memory]
