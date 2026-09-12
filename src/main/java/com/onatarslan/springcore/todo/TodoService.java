@@ -4,6 +4,7 @@ import com.onatarslan.springcore.project.ProjectService;
 import org.hibernate.validator.internal.constraintvalidators.bv.NullValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import java.time.Clock;
@@ -14,17 +15,19 @@ import java.util.UUID;
 @Service
 public class TodoService {
 
+
     private final TodoRepository todoRepository;
     private final ProjectService projectService;
-    private final List<TodoIdGenerator> idGenerators;
+    //    private final List<TodoIdGenerator> idGenerators;
+    private final TodoIdGenerator todoIdGenerator;
     private final Clock clock;
 
     @Autowired
 
-    public TodoService(TodoRepository todoRepository, ProjectService projectService, List<TodoIdGenerator> idGenerators, Clock clock) {
+    public TodoService(TodoRepository todoRepository, ProjectService projectService,@Qualifier("uuid") TodoIdGenerator todoIdGenerator , Clock clock) {
         this.todoRepository = todoRepository;
         this.projectService = projectService;
-        this.idGenerators = List.copyOf(idGenerators);
+        this.todoIdGenerator = todoIdGenerator;
         this.clock = clock;
     }
 

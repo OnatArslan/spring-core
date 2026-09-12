@@ -2,6 +2,19 @@ spring:
   application:
     name: spring-core
   profiles:
-    active: dev
+    active:
+
+orbit:
+  todo:
+    id-strategy: uuid
+    default-status: TODO
+    max-per-project: 100
+    cleanup-enabled: false
+    cleanup-interval: PT30M
+
+  project:
+    default-limit: 10
+
+
 
 

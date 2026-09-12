@@ -1,0 +1,8 @@
+orbit:
+  project:
+    default-limit: 50
+
+  todo:
+    max-per-project: 500
+    id-strategy: uuid
+    cleanup-enabled: true

@@ -7,7 +7,7 @@ import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Component
-@Qualifier("sequential")
+@Qualifier("sequential") // we can use this name in injection point
 public class SequentialTodoIdGenerator implements TodoIdGenerator {
 
     private final AtomicLong sequence = new AtomicLong();

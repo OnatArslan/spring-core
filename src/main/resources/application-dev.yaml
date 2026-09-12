@@ -1,0 +1,7 @@
+orbit:
+  project:
+    default-limit: 5
+
+  todo:
+    max-per-project: 20
+    id-strategy: sequential
