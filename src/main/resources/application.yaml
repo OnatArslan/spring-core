@@ -7,7 +7,7 @@ spring:
 orbit:
   todo:
     id-strategy: uuid
-    default-status: TODO
+    default-status: PENDING
     max-per-project: 100
     cleanup-enabled: false
     cleanup-interval: PT30M

@@ -11,8 +11,6 @@ public record Todo(
         Instant createdAt
 ) {
 
-    public enum TodoStatus{
-        PENDING, IN_PROGRESS, COMPLETED
-    }
+
 
 }

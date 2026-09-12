@@ -1,9 +1,11 @@
 package com.onatarslan.springcore.todo;
 
+import com.onatarslan.springcore.config.OrbitProperties;
 import com.onatarslan.springcore.project.ProjectService;
 import org.hibernate.validator.internal.constraintvalidators.bv.NullValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
@@ -21,14 +23,20 @@ public class TodoService {
     //    private final List<TodoIdGenerator> idGenerators;
     private final TodoIdGenerator todoIdGenerator;
     private final Clock clock;
+    private final int maxTodosPerProject;
+    private final OrbitProperties.Todo todoProperties;
+
+
 
     @Autowired
 
-    public TodoService(TodoRepository todoRepository, ProjectService projectService,@Qualifier("uuid") TodoIdGenerator todoIdGenerator , Clock clock) {
+    public TodoService(TodoRepository todoRepository, ProjectService projectService,@Qualifier("uuid") TodoIdGenerator todoIdGenerator , Clock clock, @Value("${orbit.todo.max-per-project:100}") int maxTodosPerProject, OrbitProperties todoProperties) {
         this.todoRepository = todoRepository;
         this.projectService = projectService;
         this.todoIdGenerator = todoIdGenerator;
         this.clock = clock;
+        this.maxTodosPerProject = maxTodosPerProject;
+        this.todoProperties = todoProperties.todo();
     }
 
 
@@ -50,7 +58,7 @@ public class TodoService {
                 UUID.randomUUID(),
                 projectId,
                 title,
-                Todo.TodoStatus.PENDING,
+                TodoStatus.PENDING,
                 clock.instant()
         );
 
