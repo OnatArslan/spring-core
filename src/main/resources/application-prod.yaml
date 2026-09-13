@@ -6,3 +6,12 @@ orbit:
     max-per-project: 500
     id-strategy: uuid
     cleanup-enabled: true
+
+logging:
+  level:
+    root: info
+    com.onatarslan.springcore: info
+
+  structured:
+    format:
+      console: logstash

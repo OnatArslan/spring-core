@@ -3,6 +3,8 @@ package com.onatarslan.springcore.todo;
 import com.onatarslan.springcore.config.OrbitProperties;
 import com.onatarslan.springcore.project.ProjectService;
 import org.hibernate.validator.internal.constraintvalidators.bv.NullValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,7 +27,7 @@ public class TodoService {
     private final Clock clock;
     private final int maxTodosPerProject;
     private final OrbitProperties.Todo todoProperties;
-
+    private static final Logger log = LoggerFactory.getLogger(TodoService.class);
 
 
     @Autowired
@@ -61,6 +63,11 @@ public class TodoService {
                 TodoStatus.PENDING,
                 clock.instant()
         );
+
+        if(log.isDebugEnabled()){ // If we use expensive operation in here (this is not a good example) we can use isDebugEnabled
+        log.debug("Todo created: todoId={}, projectId={}, status={}", todo.id(), todo.projectId(), todo.status());
+        }
+
 
         return todo;
     }

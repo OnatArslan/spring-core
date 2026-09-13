@@ -3,6 +3,8 @@ spring:
     name: spring-core
   profiles:
     active:
+  lifecycle:
+    timeout-per-shutdown-phase: 40s # this is for graceful shutdown
 
 orbit:
   todo:
@@ -14,7 +16,11 @@ orbit:
 
   project:
     default-limit: 10
-
+logging:
+  level:
+    com.onatarslan.springcore.todo: debug # perfect setting when you debug one package :)
+    com.onatarslan.springcore: info
+    root: info
 
 
 
